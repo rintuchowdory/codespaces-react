@@ -1,0 +1,35 @@
+import React from "react";
+import "./App.css";
+import profile from "./assets/profile.jpg";
+
+function App() {
+  return (
+    <div className="hero">
+
+      <div className="left">
+        <img src={profile} alt="Rintu" />
+      </div>
+
+      <div className="right">
+        <h1>
+          Hi, I'm <span>Rintu</span>
+        </h1>
+
+        <h2>Full Stack Developer</h2>
+
+        <p>
+          I build modern, scalable and visually powerful web applications
+          using React, JavaScript and modern technologies.
+        </p>
+
+        <div className="buttons">
+          <button>View Projects</button>
+          <button className="outline">Contact Me</button>
+        </div>
+      </div>
+
+    </div>
+  );
+}
+
+export default App;
