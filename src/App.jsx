@@ -1,37 +1,59 @@
-import React from "react";
-import "./App.css";
+import React, { useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Sidebar from "./components/Sidebar";
+import Topbar from "./components/Topbar";
+import Dashboard from "./pages/Dashboard";
+import Portfolio from "./pages/Portfolio";
+import DesignSystem from "./pages/DesignSystem";
+import Analytics from "./pages/Analytics";
+import TechStack from "./pages/TechStack";
 
-function App() {
+const pageConfig = {
+  "/": { title: "Dashboard", subtitle: "Welcome back, Rintu — here's your overview" },
+  "/portfolio": { title: "Portfolio", subtitle: "Showcasing projects and creative work" },
+  "/design": { title: "Design System", subtitle: "UI components, tokens, and patterns" },
+  "/analytics": { title: "Analytics", subtitle: "Data visualizations and insights" },
+  "/techstack": { title: "Tech Stack", subtitle: "Technologies, tools, and expertise" },
+};
+
+function Layout({ children, path }) {
+  const [collapsed, setCollapsed] = useState(false);
+  const config = pageConfig[path] || { title: "Page", subtitle: "" };
+
   return (
-    <div className="background">
-      <div className="floating circle1"></div>
-      <div className="floating circle2"></div>
-      <div className="floating circle3"></div>
-
-      <div className="card">
-        <div className="logos">
-          <img
-            src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
-            alt="GitHub"
-            className="logo"
-          />
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg"
-            alt="React"
-            className="logo spin"
-          />
-        </div>
-
-        <h1>
-          GitHub Codespaces <span>♥</span> React
-        </h1>
-
-        <p>Edit <code>src/App.jsx</code> and save to reload.</p>
-
-        <button>Learn React 🚀</button>
+    <div style={{ display: "flex", height: "100vh", overflow: "hidden", background: "var(--color-bg-primary)" }}>
+      <Sidebar collapsed={collapsed} setCollapsed={setCollapsed} />
+      <div style={{ flex: 1, display: "flex", flexDirection: "column", overflow: "hidden" }}>
+        <Topbar title={config.title} subtitle={config.subtitle} />
+        <main style={{
+          flex: 1,
+          overflowY: "auto",
+          padding: "28px",
+          background: "var(--color-bg-primary)",
+        }}>
+          {children}
+        </main>
       </div>
     </div>
   );
 }
 
-export default App;
+function AppRoutes() {
+  return (
+    <Routes>
+      <Route path="/" element={<Layout path="/"><Dashboard /></Layout>} />
+      <Route path="/portfolio" element={<Layout path="/portfolio"><Portfolio /></Layout>} />
+      <Route path="/design" element={<Layout path="/design"><DesignSystem /></Layout>} />
+      <Route path="/analytics" element={<Layout path="/analytics"><Analytics /></Layout>} />
+      <Route path="/techstack" element={<Layout path="/techstack"><TechStack /></Layout>} />
+    </Routes>
+  );
+}
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <AppRoutes />
+    </BrowserRouter>
+  );
+}
