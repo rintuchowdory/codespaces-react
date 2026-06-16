@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import {
   AreaChart, Area, BarChart, Bar, LineChart, Line,
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell
-} from "recharts";
+} from 'recharts';
 import {
   TrendingUp, TrendingDown, Users, Eye, Star, GitBranch,
   ArrowUpRight, ArrowDownRight, Code2, Coffee, Zap, Award,
@@ -26,27 +26,27 @@ const activityData = [
 
 const projectData = [
   { name: "React", value: 35, color: "#06b6d4" },
-  { name: "Node.js", value: 25, color: "#6366f1" },
-  { name: "Python", value: 20, color: "#8b5cf6" },
-  { name: "TypeScript", value: 15, color: "#ec4899" },
+  { name: "Python", value: 25, color: "#6366f1" },
+  { name: "JavaScript", value: 20, color: "#8b5cf6" },
+  { name: "Kubernetes", value: 15, color: "#ec4899" },
   { name: "Other", value: 5, color: "#f59e0b" },
 ];
 
 const recentActivity = [
-  { type: "commit", text: "feat: Add responsive dashboard layout", time: "2h ago", repo: "codespaces-react", color: "#6366f1" },
-  { type: "pr", text: "Merge pull request #42 — Design system", time: "5h ago", repo: "ui-components", color: "#10b981" },
-  { type: "star", text: "Starred awesome-react-hooks", time: "1d ago", repo: "community", color: "#f59e0b" },
-  { type: "review", text: "Reviewed PR #18 — Auth module", time: "1d ago", repo: "backend-api", color: "#ec4899" },
-  { type: "commit", text: "fix: Resolve mobile nav overflow", time: "2d ago", repo: "portfolio-v3", color: "#06b6d4" },
+  { type: "commit", text: "feat: Deploy Aura-AI interview coach with Groq LLaMA3", time: "3h ago", repo: "aura-ai", color: "#6366f1" },
+  { type: "pr", text: "Merge: GrundgesetzGPT — German Basic Law AI app", time: "8h ago", repo: "grundgesetz-gpt", color: "#10b981" },
+  { type: "star", text: "Starred: Kubernetes k3s home lab setup", time: "1d ago", repo: "k8s-project", color: "#f59e0b" },
+  { type: "commit", text: "fix: Cloudflare Worker CORS proxy for APIs", time: "1d ago", repo: "api-proxy", color: "#ec4899" },
+  { type: "commit", text: "feat: Deploy WerRiefAn.de reverse phone lookup", time: "2d ago", repo: "werriefen", color: "#06b6d4" },
 ];
 
 const skills = [
-  { name: "React / Next.js", level: 92, color: "#06b6d4" },
-  { name: "TypeScript", level: 85, color: "#6366f1" },
-  { name: "Node.js / Express", level: 80, color: "#8b5cf6" },
-  { name: "Python / Django", level: 72, color: "#ec4899" },
-  { name: "UI/UX Design", level: 78, color: "#f59e0b" },
-  { name: "DevOps / Docker", level: 65, color: "#10b981" },
+  { name: "React + Vite", level: 90, color: "#06b6d4" },
+  { name: "Docker & Kubernetes", level: 88, color: "#6366f1" },
+  { name: "AWS (EC2, S3, Lambda)", level: 82, color: "#8b5cf6" },
+  { name: "FastAPI (Python)", level: 80, color: "#ec4899" },
+  { name: "Groq / LLaMA3-70b", level: 85, color: "#f59e0b" },
+  { name: "Linux / WSL2", level: 90, color: "#10b981" },
 ];
 
 const CustomTooltip = ({ active, payload, label }) => {
@@ -157,7 +157,7 @@ export default function Dashboard() {
             Good morning, <span className="gradient-text">Rintu</span> 👋
           </h2>
           <p style={{ fontSize: "14px", color: "var(--color-text-secondary)", maxWidth: "480px", lineHeight: 1.6 }}>
-            You have <strong style={{ color: "#818cf8" }}>3 active projects</strong>, <strong style={{ color: "#34d399" }}>12 pending reviews</strong>, and your portfolio received <strong style={{ color: "#22d3ee" }}>248 views</strong> this week.
+            You have <strong style={{ color: "#818cf8" }}>85+ GitHub projects</strong>, <strong style={{ color: "#34d399" }}>30+ deployed apps</strong>, and your portfolio received <strong style={{ color: "#22d3ee" }}>1,200+ views</strong> this month.
           </p>
           <div style={{ display: "flex", gap: "12px", marginTop: "20px" }}>
             <button className="btn-primary">
@@ -171,9 +171,9 @@ export default function Dashboard() {
 
         <div style={{ display: "flex", flexDirection: "column", gap: "12px", alignItems: "flex-end" }}>
           {[
-            { icon: Code2, label: "Commits this month", value: "135", color: "#6366f1" },
-            { icon: Coffee, label: "Hours coded", value: "284h", color: "#f59e0b" },
-            { icon: Award, label: "Projects shipped", value: "12", color: "#10b981" },
+            { icon: Code2, label: "GitHub Projects", value: "85+", color: "#6366f1" },
+            { icon: Coffee, label: "Years Experience", value: "5+", color: "#f59e0b" },
+            { icon: Award, label: "Deployed Apps", value: "30+", color: "#10b981" },
           ].map(({ icon: Icon, label, value, color }) => (
             <div key={label} style={{
               display: "flex",
@@ -194,10 +194,10 @@ export default function Dashboard() {
 
       {/* KPI Stats Grid */}
       <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "20px" }}>
-        <StatCard icon={GitBranch} label="Total Commits" value="1,248" change="+18%" positive={true} color="#6366f1" />
-        <StatCard icon={Eye} label="Portfolio Views" value="8,432" change="+32%" positive={true} color="#06b6d4" />
-        <StatCard icon={Star} label="GitHub Stars" value="342" change="+12%" positive={true} color="#f59e0b" />
-        <StatCard icon={Users} label="Collaborators" value="28" change="-3%" positive={false} color="#ec4899" />
+        <StatCard icon={GitBranch} label="GitHub Projects" value="85+" change="+12%" positive={true} color="#6366f1" />
+        <StatCard icon={Eye} label="Portfolio Views" value="1,200+" change="+28%" positive={true} color="#06b6d4" />
+        <StatCard icon={Star} label="Deployed Apps" value="30+" change="+15%" positive={true} color="#f59e0b" />
+        <StatCard icon={Users} label="Years Exp." value="5+" change="+2%" positive={true} color="#ec4899" />
       </div>
 
       {/* Charts Row */}

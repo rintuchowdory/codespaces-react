@@ -4,7 +4,7 @@ import {
   PolarGrid, PolarAngleAxis, PolarRadiusAxis, ScatterChart, Scatter,
   XAxis, YAxis, ZAxis, CartesianGrid, Tooltip, Legend,
   ResponsiveContainer, PieChart, Pie, Cell, ComposedChart
-} from "recharts";
+} from 'recharts';
 import { TrendingUp, Globe, Clock, Users, BarChart3, Activity, Zap, Target } from "lucide-react";
 
 const monthlyData = [

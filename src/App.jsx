@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import Sidebar from "./components/Sidebar";
 import Topbar from "./components/Topbar";
 import Dashboard from "./pages/Dashboard";
@@ -52,8 +52,8 @@ function AppRoutes() {
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <HashRouter basename="/codespaces-react">
       <AppRoutes />
-    </BrowserRouter>
+    </HashRouter>
   );
 }
